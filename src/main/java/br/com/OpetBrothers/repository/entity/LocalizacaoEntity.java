@@ -17,37 +17,39 @@ public class LocalizacaoEntity {
 	@Column(name="ID_LOCALIZACAO")
 	@GeneratedValue(generator="id_localizacao")
     @GenericGenerator(name="id_localizacao", strategy = "increment")
-	private int id_localizacao;
+	private int Id_Localizacao;
 	
 	@Column(name="LONGITUDE")
-	private String longitude;
+	private String Longitude;
 	
 	@Column(name="LATITUDE")
-	private String latitude;
+	private String Latitude;
 
-	public int getId_localizacao() {
-		return id_localizacao;
+	public int getId_Localizacao() {
+		return Id_Localizacao;
 	}
 
-	public void setId_localizacao(int id_localizacao) {
-		this.id_localizacao = id_localizacao;
+	public void setId_Localizacao(int id_Localizacao) {
+		Id_Localizacao = id_Localizacao;
 	}
 
 	public String getLongitude() {
-		return longitude;
+		return Longitude;
 	}
 
 	public void setLongitude(String longitude) {
-		this.longitude = longitude;
+		Longitude = longitude;
 	}
 
 	public String getLatitude() {
-		return latitude;
+		return Latitude;
 	}
 
 	public void setLatitude(String latitude) {
-		this.latitude = latitude;
+		Latitude = latitude;
 	}
+
+
 	
 	
 }

@@ -21,54 +21,61 @@ public class Avaliacao_ProdutoEntity
 	@Column(name="ID_AVALIACAO_PRODUTO")
 	@GeneratedValue(generator="id_avaliacao_produto")
     @GenericGenerator(name="id_avaliacao_produto", strategy = "increment")
-	private int id_avaliacao_produto;
+	private int Id_Avaliacao_Produto;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="FK_PRODUTO")
-	private ProdutoEntity fk_produto;
+	private ProdutoEntity Fk_Produto;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="FK_USUARIO")
-	private UsuarioEntity fk_usuario;
+	@JoinColumn(name="FK_PESSOA_FISICA")
+	private PessoaFisicaEntity Fk_Pessoa_Fisica;
 	
 	@Column(name="COMENTARIO")
-	private String comentario;
+	private String Comentario;
 	
 	@Column(name="NOTA")
-	private int nota;
-	
-	
-	public int getId_avaliacao_produto() {
-		return id_avaliacao_produto;
+	private int Nota;
+
+	public int getId_Avaliacao_Produto() {
+		return Id_Avaliacao_Produto;
 	}
-	public void setId_avaliacao_produto(int id_avaliacao_produto) {
-		this.id_avaliacao_produto = id_avaliacao_produto;
+
+	public void setId_Avaliacao_Produto(int id_Avaliacao_Produto) {
+		Id_Avaliacao_Produto = id_Avaliacao_Produto;
 	}
-	public ProdutoEntity getFk_produto() {
-		return fk_produto;
+
+	public ProdutoEntity getFk_Produto() {
+		return Fk_Produto;
 	}
-	public void setFk_produto(ProdutoEntity fk_produto) {
-		this.fk_produto = fk_produto;
+
+	public void setFk_Produto(ProdutoEntity fk_Produto) {
+		Fk_Produto = fk_Produto;
 	}
-	public UsuarioEntity getFk_usuario() {
-		return fk_usuario;
+
+	public PessoaFisicaEntity getFk_Pessoa_Fisica() {
+		return Fk_Pessoa_Fisica;
 	}
-	public void setFk_usuario(UsuarioEntity fk_usuario) {
-		this.fk_usuario = fk_usuario;
+
+	public void setFk_Pessoa_Fisica(PessoaFisicaEntity fk_Pessoa_Fisica) {
+		Fk_Pessoa_Fisica = fk_Pessoa_Fisica;
 	}
+
 	public String getComentario() {
-		return comentario;
+		return Comentario;
 	}
+
 	public void setComentario(String comentario) {
-		this.comentario = comentario;
+		Comentario = comentario;
 	}
+
 	public int getNota() {
-		return nota;
+		return Nota;
 	}
+
 	public void setNota(int nota) {
-		this.nota = nota;
+		Nota = nota;
 	}
-	
 	
 	
 }

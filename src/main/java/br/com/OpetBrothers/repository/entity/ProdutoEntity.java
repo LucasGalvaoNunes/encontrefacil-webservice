@@ -1,5 +1,7 @@
 package br.com.OpetBrothers.repository.entity;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,95 +23,95 @@ public class ProdutoEntity {
 	@Column(name="ID_PRODUTO")
 	@GeneratedValue(generator="id_produto")
     @GenericGenerator(name="id_produto", strategy = "increment")
-	private int id_produto;
-
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="FK_MARCA_PRODUTO")
-	private Marca_ProdutoEntity fk_marca_produto;
+	private int Id_Produto;
 
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="FK_CATEGORIA_PRODUTO")
-	private Categoria_ProdutoEntity fk_categoria_produto;
+	private Categoria_ProdutoEntity Fk_Categoria_Produto;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="FK_LOJA")
-	private LojaEntity fk_loja;
+	@JoinColumn(name="FK_MARCA_PRODUTO")
+	private Marca_ProdutoEntity Fk_Marca_Produto;
+
 	
 	@Column(name="NOME")
-	private String nome;
+	private String Nome;
 	
 	@Column(name="DESCRICAO")
-	private String descricao;
+	private String Descricao;
 	
 	@Column(name="PRECO")
-	private String preco;
+	private String Preco;
 	
 	@Lob
 	@Column(name = "FOTO")
-	private byte[] foto;
+	private byte[] Foto;
+	
+	@Column(name = "DATA_PUBLICACAO")
+	private Timestamp Data_Publicacao;
 
-	public int getId_produto() {
-		return id_produto;
+	public int getId_Produto() {
+		return Id_Produto;
 	}
 
-	public void setId_produto(int id_produto) {
-		this.id_produto = id_produto;
+	public void setId_Produto(int id_Produto) {
+		Id_Produto = id_Produto;
 	}
 
-	public Marca_ProdutoEntity getFk_marca_produto() {
-		return fk_marca_produto;
+	public Categoria_ProdutoEntity getFk_Categoria_Produto() {
+		return Fk_Categoria_Produto;
 	}
 
-	public void setFk_marca_produto(Marca_ProdutoEntity fk_marca_produto) {
-		this.fk_marca_produto = fk_marca_produto;
+	public void setFk_Categoria_Produto(Categoria_ProdutoEntity fk_Categoria_Produto) {
+		Fk_Categoria_Produto = fk_Categoria_Produto;
 	}
 
-	public Categoria_ProdutoEntity getFk_categoria_produto() {
-		return fk_categoria_produto;
+	public Marca_ProdutoEntity getFk_Marca_Produto() {
+		return Fk_Marca_Produto;
 	}
 
-	public void setFk_categoria_produto(Categoria_ProdutoEntity fk_categoria_produto) {
-		this.fk_categoria_produto = fk_categoria_produto;
+	public void setFk_Marca_Produto(Marca_ProdutoEntity fk_Marca_Produto) {
+		Fk_Marca_Produto = fk_Marca_Produto;
 	}
 
 	public String getNome() {
-		return nome;
+		return Nome;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		Nome = nome;
 	}
 
 	public String getDescricao() {
-		return descricao;
+		return Descricao;
 	}
 
 	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+		Descricao = descricao;
 	}
 
 	public String getPreco() {
-		return preco;
+		return Preco;
 	}
 
 	public void setPreco(String preco) {
-		this.preco = preco;
+		Preco = preco;
 	}
 
 	public byte[] getFoto() {
-		return foto;
+		return Foto;
 	}
 
 	public void setFoto(byte[] foto) {
-		this.foto = foto;
+		Foto = foto;
 	}
 
-	public LojaEntity getFk_loja() {
-		return fk_loja;
+	public Timestamp getData_Publicacao() {
+		return Data_Publicacao;
 	}
 
-	public void setFk_loja(LojaEntity fk_loja) {
-		this.fk_loja = fk_loja;
+	public void setData_Publicacao(Timestamp data_Publicacao) {
+		Data_Publicacao = data_Publicacao;
 	}
 
 	

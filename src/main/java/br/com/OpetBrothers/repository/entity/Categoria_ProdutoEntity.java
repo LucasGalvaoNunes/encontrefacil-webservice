@@ -17,23 +17,27 @@ public class Categoria_ProdutoEntity {
 	@Column(name="ID_CATEGORIA_PRODUTO")
 	@GeneratedValue(generator="id_categoria_produto")
     @GenericGenerator(name="id_categoria_produto", strategy = "increment")
-	private int id_categoria_produto;
+	private int Id_Categoria_Produto;
 	
 	@Column(name="NOME")
-	private String nome;
-	
-	public int getId_categoria_produto() {
-		return id_categoria_produto;
+	private String Nome;
+
+	public int getId_Categoria_Produto() {
+		return Id_Categoria_Produto;
 	}
-	public void setId_categoria_produto(int id_categoria_produto) {
-		this.id_categoria_produto = id_categoria_produto;
+
+	public void setId_Categoria_Produto(int id_Categoria_Produto) {
+		Id_Categoria_Produto = id_Categoria_Produto;
 	}
+
 	public String getNome() {
-		return nome;
+		return Nome;
 	}
+
 	public void setNome(String nome) {
-		this.nome = nome;
+		Nome = nome;
 	}
 	
+
 	
 }

@@ -18,72 +18,72 @@ public class PessoaEntity {
 	@Column(name="ID_PESSOA")
 	@GeneratedValue(generator="id_pessoa")
     @GenericGenerator(name="id_pessoa", strategy = "increment")
-	private int Id_Pessoa;
+	private int id_Pessoa;
 	
 	@Column(name="NOME")
-	private String Nome;
+	private String nome;
 	
 	@Column(name="SOBRENOME")
-	private String Sobrenome;
+	private String sobrenome;
 	
 	@Column(name="TELEFONE")
-	private String Telefone;
+	private String telefone;
 	
 	@Lob
 	@Column(name="FOTO")
-	private byte[] Foto;
+	private byte[] foto;
 	
 	@Column(name="EMAIL")
-	private String Email;
+	private String email;
 
 	public int getId_Pessoa() {
-		return Id_Pessoa;
+		return id_Pessoa;
 	}
 
 	public void setId_Pessoa(int id_Pessoa) {
-		Id_Pessoa = id_Pessoa;
+		this.id_Pessoa = id_Pessoa;
 	}
 
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
 
 	public String getSobrenome() {
-		return Sobrenome;
+		return sobrenome;
 	}
 
 	public void setSobrenome(String sobrenome) {
-		Sobrenome = sobrenome;
+		this.sobrenome = sobrenome;
 	}
 
 	public String getTelefone() {
-		return Telefone;
+		return telefone;
 	}
 
 	public void setTelefone(String telefone) {
-		Telefone = telefone;
+		this.telefone = telefone;
 	}
 
 	public byte[] getFoto() {
-		return Foto;
+		return foto;
 	}
 
 	public void setFoto(byte[] foto) {
-		Foto = foto;
+		this.foto = foto;
 	}
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
-	
-	
+
+		
 	
 }

@@ -1,6 +1,7 @@
 package br.com.OpetBrothers.controller;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -37,7 +38,7 @@ public class PessoaJuridicaController implements PessoaJuridicaDAO {
 	}
 
 	@Override
-	@POST
+	@DELETE
 	@Consumes("application/json; charset=UTF-8")
 	@Produces("application/json; charset=UTF-8")
 	@Path("/Deletar")
@@ -69,6 +70,24 @@ public class PessoaJuridicaController implements PessoaJuridicaDAO {
 	@Path("/Todas")
 	public PessoaJuridicaEntityDTO TodasLojas() {
 		return this.repository.TodasLojas();
+	}
+
+	@Override
+	@POST
+	@Consumes("application/json; charset=UTF-8")
+	@Produces("application/json; charset=UTF-8")
+	@Path("/ReenviarEmail")
+	public PessoaJuridicaEntityDTO EnviarEmail(PessoaJuridicaEntity pPessoaJuridicaEntity) {
+		return this.repository.EnviarEmail(pPessoaJuridicaEntity);
+	}
+
+	@Override
+	@PUT
+	@Consumes("application/json; charset=UTF-8")
+	@Produces("application/json; charset=UTF-8")
+	@Path("/VerificarEmail")
+	public PessoaJuridicaEntityDTO VerificarCodigo(PessoaJuridicaEntity pPessoaJuridicaEntity) {
+		return this.repository.VerificarCodigo(pPessoaJuridicaEntity);
 	}
 
 }

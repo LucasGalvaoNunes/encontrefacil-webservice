@@ -9,63 +9,88 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import br.com.OpetBrothers.dao.ProdutoDAO;
 import br.com.OpetBrothers.dto.ProdutoEntityDTO;
 import br.com.OpetBrothers.repository.ProdutoRepository;
 import br.com.OpetBrothers.repository.entity.ProdutoEntity;
+
 @Path("/Produto")
-public class ProdutoController 
-{
-	private ProdutoRepository  repository  = new ProdutoRepository();
-	
+public class ProdutoController implements ProdutoDAO{
+	private ProdutoRepository repository = new ProdutoRepository();
+
+	@Override
 	@POST
-	@Produces("application/json")
-	@Consumes("application/json")
+	@Consumes("application/json; charset=UTF-8")
+	@Produces("application/json; charset=UTF-8")
 	@Path("/Cadastrar")
-	public ProdutoEntityDTO Salvar(ProdutoEntity pProdutoEntity){
-		return this.repository.Salvar(pProdutoEntity);
+	public ProdutoEntityDTO Cadastrar(ProdutoEntity pProdutoEntity) {
+		return this.repository.Cadastrar(pProdutoEntity);
 	}
-	
+
+	@Override
 	@PUT
-	@Produces("application/json")
-	@Consumes("application/json")
-	@Path("/Alterar")
-	public ProdutoEntityDTO Alterar(ProdutoEntity pProdutoEntity){
-		return this.repository.Alterar(pProdutoEntity);
+	@Consumes("application/json; charset=UTF-8")
+	@Produces("application/json; charset=UTF-8")
+	@Path("/Atualizar")
+	public ProdutoEntityDTO Atualizar(ProdutoEntity pProdutoEntity) {
+		return this.repository.Atualizar(pProdutoEntity);
 	}
-	
+
+	@Override
 	@DELETE
-	@Produces("application/json")
-	@Consumes("application/json")
+	@Consumes("application/json; charset=UTF-8")
+	@Produces("application/json; charset=UTF-8")
 	@Path("/Excluir")
-	public ProdutoEntityDTO Excluir(ProdutoEntity pProdutoEntity){
+	public ProdutoEntityDTO Excluir(ProdutoEntity pProdutoEntity) {
 		return this.repository.Excluir(pProdutoEntity);
 	}
-	
+
+	@Override
 	@GET
-	@Produces("application/json")
-	@Path("/PorCategoria/{pCategoria}")
-	public ProdutoEntityDTO PorCategoria(@PathParam("pCategoria") String pCategoria){
-		return this.repository.PorCategoria(pCategoria);
+	@Produces("application/json; charset=UTF-8")
+	@Path("/Get/{pId}")
+	public ProdutoEntityDTO GetProduto(@PathParam("pId") int pId) {
+		return this.repository.GetProduto(pId);
+	}
+
+	@Override
+	@GET
+	@Produces("application/json; charset=UTF-8")
+	@Path("/BuscarPorNome/{pBairro}/{pCidade}/{pEstado}/{pNome}")
+	public ProdutoEntityDTO BuscarPorNome(@PathParam("pBairro")String pBairro, @PathParam("pCidade")String pCidade, @PathParam("pEstado")String pEstado, @PathParam("pNome")String pNome) {
+		return this.repository.BuscarPorNome(pBairro, pCidade, pEstado, pNome);
+	}
+
+	@Override
+	@GET
+	@Produces("application/json; charset=UTF-8")
+	@Path("/BuscarPorCategoria/{pBairro}/{pCidade}/{pEstado}/{pId}")
+	public ProdutoEntityDTO BuscarPorCategoria(@PathParam("pBairro")String pBairro, @PathParam("pCidade")String pCidade, @PathParam("pEstado")String pEstado, @PathParam("pId") int pId) {
+		return this.repository.BuscarPorCategoria(pBairro, pCidade, pEstado, pId);
+	}
+
+	@Override
+	@GET
+	@Produces("application/json; charset=UTF-8")
+	@Path("/PorLoja/{pId}")
+	public ProdutoEntityDTO RelatorioLoja(@PathParam("pId") int pId) {
+		return this.repository.RelatorioLoja(pId);
+	}
+
+	@Override
+	@GET
+	@Produces("application/json; charset=UTF-8")
+	@Path("/GetPorLoja/{pId}")
+	public ProdutoEntityDTO GetProdutodaLoja(@PathParam("pId")int pId) {
+		return this.repository.GetProdutodaLoja(pId);
+	}
+
+	@Override
+	@GET
+	@Produces("application/json; charset=UTF-8")
+	@Path("/AtualizarProdutos")
+	public ProdutoEntityDTO ExcluirProdutosExpirados() {
+		return this.repository.ExcluirProdutosExpirados();
 	}
 	
-	@GET
-	@Produces("application/json")
-	@Path("/PorMarca/{pMarca}")
-	public ProdutoEntityDTO PorMarca(@PathParam("pMarca") String pMarca){
-		return this.repository.PorMarca(pMarca);
-	}
-	
-	@GET
-	@Produces("application/json")
-	@Path("/PorLoja/{pIdLoja}")
-	public ProdutoEntityDTO PorLoja(@PathParam("pIdLoja") int pIdLoja){
-		return this.repository.PorLoja(pIdLoja);
-	}
-	
-	@GET
-	@Produces("application/json")
-	@Path("/Tudo")
-	public ProdutoEntityDTO Tudo(){
-		return this.repository.Tudo();
-	}
 }

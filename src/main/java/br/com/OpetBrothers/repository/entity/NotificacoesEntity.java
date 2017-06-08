@@ -21,51 +21,51 @@ public class NotificacoesEntity {
 	@Column(name="ID_NOTIFICACOES")
 	@GeneratedValue(generator="Id_Notificacoes")
     @GenericGenerator(name="Id_Notificacoes", strategy = "increment")
-	private int Id_Notificacoes;
+	private int id_Notificacoes;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="FK_PRODUTO")
-	private ProdutoEntity Fk_Produto;
+	private ProdutoEntity fk_Produto;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="FK_PESSOA_JURIDICA")
-	private PessoaJuridicaEntity Fk_Pessoa_Juridica;
+	private PessoaJuridicaEntity fk_Pessoa_Juridica;
 	
 	@Column(name="DETALHES")
-	private String Detalhes;
+	private String detalhes;
 
 	public int getId_Notificacoes() {
-		return Id_Notificacoes;
+		return id_Notificacoes;
 	}
 
 	public void setId_Notificacoes(int id_Notificacoes) {
-		Id_Notificacoes = id_Notificacoes;
+		this.id_Notificacoes = id_Notificacoes;
 	}
 
 	public ProdutoEntity getFk_Produto() {
-		return Fk_Produto;
+		return fk_Produto;
 	}
 
 	public void setFk_Produto(ProdutoEntity fk_Produto) {
-		Fk_Produto = fk_Produto;
+		this.fk_Produto = fk_Produto;
 	}
 
 	public PessoaJuridicaEntity getFk_Pessoa_Juridica() {
-		return Fk_Pessoa_Juridica;
+		return fk_Pessoa_Juridica;
 	}
 
 	public void setFk_Pessoa_Juridica(PessoaJuridicaEntity fk_Pessoa_Juridica) {
-		Fk_Pessoa_Juridica = fk_Pessoa_Juridica;
+		this.fk_Pessoa_Juridica = fk_Pessoa_Juridica;
 	}
 
 	public String getDetalhes() {
-		return Detalhes;
+		return detalhes;
 	}
 
 	public void setDetalhes(String detalhes) {
-		Detalhes = detalhes;
+		this.detalhes = detalhes;
 	}
-	
+
 	
 	
 	

@@ -1,6 +1,7 @@
 package br.com.OpetBrothers.controller;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -36,7 +37,7 @@ public class Categoria_LojaController implements Categoria_LojaDAO {
 	}
 
 	@Override
-	@POST
+	@DELETE
 	@Consumes("application/json; charset=UTF-8")
 	@Produces("application/json; charset=UTF-8")
 	@Path("/Excluir")

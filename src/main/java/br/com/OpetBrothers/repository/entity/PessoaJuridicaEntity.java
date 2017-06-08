@@ -21,86 +21,97 @@ public class PessoaJuridicaEntity {
 	@Column(name="ID_PESSOA_JURIDICA")
 	@GeneratedValue(generator="Id_PessoaJuridica")
     @GenericGenerator(name="Id_PessoaJuridica", strategy = "increment")
-	private int Id_PessoaJuridica;
+	private int id_PessoaJuridica;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="FK_PESSOA")
-	private PessoaEntity Fk_Pessoa;
+	private PessoaEntity fk_Pessoa;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="FK_CATEGORIA_LOJA")
-	private Categoria_LojaEntity Fk_Categoria_Loja;
+	private Categoria_LojaEntity fk_Categoria_Loja;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="FK_LOCALIZACAO")
-	private LocalizacaoEntity Fk_Localizacao;
+	private LocalizacaoEntity fk_Localizacao;
 	
 	
 	@Column(name="SENHA")
-	private String Senha;
+	private String senha;
 	
 	@Column(name="RAZAO_SOCIAL")
-	private String Razao_Social;
+	private String razao_Social;
 	
 	@Column(name="CNPJ")
-	private String Cnpj;
+	private String cnpj;
+	
+	@Column(name="CODIGO_VERIFICACAO")
+	private String codigo_verificacao;
 
 	public int getId_PessoaJuridica() {
-		return Id_PessoaJuridica;
+		return id_PessoaJuridica;
 	}
 
 	public void setId_PessoaJuridica(int id_PessoaJuridica) {
-		Id_PessoaJuridica = id_PessoaJuridica;
+		this.id_PessoaJuridica = id_PessoaJuridica;
 	}
 
 	public PessoaEntity getFk_Pessoa() {
-		return Fk_Pessoa;
+		return fk_Pessoa;
 	}
 
 	public void setFk_Pessoa(PessoaEntity fk_Pessoa) {
-		Fk_Pessoa = fk_Pessoa;
+		this.fk_Pessoa = fk_Pessoa;
 	}
 
 	public Categoria_LojaEntity getFk_Categoria_Loja() {
-		return Fk_Categoria_Loja;
+		return fk_Categoria_Loja;
 	}
 
 	public void setFk_Categoria_Loja(Categoria_LojaEntity fk_Categoria_Loja) {
-		Fk_Categoria_Loja = fk_Categoria_Loja;
+		this.fk_Categoria_Loja = fk_Categoria_Loja;
 	}
 
 	public LocalizacaoEntity getFk_Localizacao() {
-		return Fk_Localizacao;
+		return fk_Localizacao;
 	}
 
 	public void setFk_Localizacao(LocalizacaoEntity fk_Localizacao) {
-		Fk_Localizacao = fk_Localizacao;
+		this.fk_Localizacao = fk_Localizacao;
 	}
 
 	public String getSenha() {
-		return Senha;
+		return senha;
 	}
 
 	public void setSenha(String senha) {
-		Senha = senha;
+		this.senha = senha;
 	}
 
 	public String getRazao_Social() {
-		return Razao_Social;
+		return razao_Social;
 	}
 
 	public void setRazao_Social(String razao_Social) {
-		Razao_Social = razao_Social;
+		this.razao_Social = razao_Social;
 	}
 
 	public String getCnpj() {
-		return Cnpj;
+		return cnpj;
 	}
 
 	public void setCnpj(String cnpj) {
-		Cnpj = cnpj;
+		this.cnpj = cnpj;
 	}
-	
-	
 
+	public String getCodigo_verificacao() {
+		return codigo_verificacao;
+	}
+
+	public void setCodigo_verificacao(String codigo_verificacao) {
+		this.codigo_verificacao = codigo_verificacao;
+	}
+
+	
+	
 }

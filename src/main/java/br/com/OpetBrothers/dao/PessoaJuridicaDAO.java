@@ -15,5 +15,9 @@ public interface PessoaJuridicaDAO {
 	
 	PessoaJuridicaEntityDTO GetPessoaJuridica(int pId);
 	
+	PessoaJuridicaEntityDTO EnviarEmail(PessoaJuridicaEntity pPessoaJuridicaEntity);
+	
+	PessoaJuridicaEntityDTO VerificarCodigo(PessoaJuridicaEntity pPessoaJuridicaEntity);
+	
 	PessoaJuridicaEntityDTO TodasLojas();
 }

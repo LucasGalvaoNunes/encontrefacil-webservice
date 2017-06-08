@@ -2,11 +2,8 @@ package br.com.OpetBrothers.dto;
 
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import br.com.OpetBrothers.repository.entity.Categoria_LojaEntity;
 
-@XmlRootElement(name="Categoria_LojaEntityDTO")
 public class Categoria_LojaEntityDTO extends AbstractDTO<Categoria_LojaEntity>
 {
 	public Categoria_LojaEntityDTO()

@@ -75,7 +75,7 @@ public class Categoria_LojaRepository implements Categoria_LojaDAO{
 	public Categoria_LojaEntityDTO GetCategoria_Loja(int pId) {
 		try{
 			@SuppressWarnings("unchecked")
-			List<Categoria_LojaEntity> lista = this.entityManager.createQuery("FROM Categoria_LojaEntity p WHERE p.Id_Categoria_Loja = :pId")
+			List<Categoria_LojaEntity> lista = this.entityManager.createQuery("SELECT p FROM Categoria_LojaEntity p WHERE p.id_Categoria_Loja = :pId")
 			.setParameter("pId", pId).getResultList();
 			if(lista != null && lista.size() > 0)
 			{

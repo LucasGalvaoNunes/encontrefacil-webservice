@@ -21,61 +21,61 @@ public class Avaliacao_ProdutoEntity
 	@Column(name="ID_AVALIACAO_PRODUTO")
 	@GeneratedValue(generator="id_avaliacao_produto")
     @GenericGenerator(name="id_avaliacao_produto", strategy = "increment")
-	private int Id_Avaliacao_Produto;
+	private int id_Avaliacao_Produto;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="FK_PRODUTO")
-	private ProdutoEntity Fk_Produto;
+	private ProdutoEntity fk_Produto;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="FK_PESSOA_FISICA")
-	private PessoaFisicaEntity Fk_Pessoa_Fisica;
+	private PessoaFisicaEntity fk_Pessoa_Fisica;
 	
 	@Column(name="COMENTARIO")
-	private String Comentario;
+	private String comentario;
 	
 	@Column(name="NOTA")
-	private int Nota;
+	private int nota;
 
 	public int getId_Avaliacao_Produto() {
-		return Id_Avaliacao_Produto;
+		return id_Avaliacao_Produto;
 	}
 
 	public void setId_Avaliacao_Produto(int id_Avaliacao_Produto) {
-		Id_Avaliacao_Produto = id_Avaliacao_Produto;
+		this.id_Avaliacao_Produto = id_Avaliacao_Produto;
 	}
 
 	public ProdutoEntity getFk_Produto() {
-		return Fk_Produto;
+		return fk_Produto;
 	}
 
 	public void setFk_Produto(ProdutoEntity fk_Produto) {
-		Fk_Produto = fk_Produto;
+		this.fk_Produto = fk_Produto;
 	}
 
 	public PessoaFisicaEntity getFk_Pessoa_Fisica() {
-		return Fk_Pessoa_Fisica;
+		return fk_Pessoa_Fisica;
 	}
 
 	public void setFk_Pessoa_Fisica(PessoaFisicaEntity fk_Pessoa_Fisica) {
-		Fk_Pessoa_Fisica = fk_Pessoa_Fisica;
+		this.fk_Pessoa_Fisica = fk_Pessoa_Fisica;
 	}
 
 	public String getComentario() {
-		return Comentario;
+		return comentario;
 	}
 
 	public void setComentario(String comentario) {
-		Comentario = comentario;
+		this.comentario = comentario;
 	}
 
 	public int getNota() {
-		return Nota;
+		return nota;
 	}
 
 	public void setNota(int nota) {
-		Nota = nota;
+		this.nota = nota;
 	}
-	
+
 	
 }

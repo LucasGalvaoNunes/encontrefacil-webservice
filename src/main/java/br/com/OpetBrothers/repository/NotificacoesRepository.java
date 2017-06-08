@@ -6,94 +6,47 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import br.com.OpetBrothers.dao.PessoaDAO;
-import br.com.OpetBrothers.dto.PessoaEntityDTO;
-import br.com.OpetBrothers.repository.entity.PessoaEntity;
+import br.com.OpetBrothers.dao.NotificacoesDAO;
+import br.com.OpetBrothers.dto.NotificacoesEntityDTO;
+import br.com.OpetBrothers.repository.entity.NotificacoesEntity;
 
-public class PessoaRepository implements PessoaDAO{
-
+public class NotificacoesRepository implements NotificacoesDAO{
 	private final EntityManagerFactory entityManagerFactory;
 	 
 	private final EntityManager entityManager;
  
-	public PessoaRepository(){
+	public NotificacoesRepository(){
  
 		/*CRIANDO O NOSSO EntityManagerFactory COM AS PORPRIEDADOS DO ARQUIVO persistence.xml */
 		this.entityManagerFactory = Persistence.createEntityManagerFactory("EncontreFacilWs");
  
 		this.entityManager = this.entityManagerFactory.createEntityManager();
 	}
-	
+
 	@Override
-	public PessoaEntityDTO Cadastrar(PessoaEntity pPessoaEntity) {
+	public NotificacoesEntityDTO Cadastrar(NotificacoesEntity pNotificacoesEntity) {
 		try{
-			/**
-			 * Inicia a transacao com o BD
-			 */
 			this.entityManager.getTransaction().begin();
-			this.entityManager.persist(pPessoaEntity);
+			this.entityManager.persist(pNotificacoesEntity);
 			this.entityManager.getTransaction().commit();
 			
-			/**
-			 * Terminado de commitar, retorna-se os dados para o cliente
-			 */
-			return new PessoaEntityDTO(true,"Cadastrado com sucesso!", pPessoaEntity);
+			return new NotificacoesEntityDTO(true, "Cadastrado com sucesso!", pNotificacoesEntity);
 		}catch (Exception e) {
 			return null;
 		}finally {
-			/**
-			 * Apos ter feito tudo,finaliza a transacao do banco
-			 */
 			this.entityManager.close();
 			this.entityManagerFactory.close();
 		}
 	}
 
 	@Override
-	public PessoaEntityDTO Atualizar(PessoaEntity pPessoaEntity) {
+	public NotificacoesEntityDTO Atualizar(NotificacoesEntity pNotificacoesEntity) {
 		try{
 			this.entityManager.getTransaction().begin();
-			this.entityManager.merge(pPessoaEntity);
+			this.entityManager.merge(pNotificacoesEntity);
 			this.entityManager.getTransaction().commit();
-			return new PessoaEntityDTO(true,"Atualizado com sucesso!", pPessoaEntity);
-		}catch (Exception e) {
-			return null;
-		}finally {
-			this.entityManager.close();
-			this.entityManagerFactory.close();
-		}
-	}
-
-	@Override
-	public PessoaEntityDTO Excluir(PessoaEntity pPessoaEntity) {
-		try{
-			this.entityManager.getTransaction().begin();
-			this.entityManager.remove(pPessoaEntity);
-			this.entityManager.getTransaction().commit();
-			return new PessoaEntityDTO(true,"Excluido com sucesso!");
-		}catch (Exception e) {
-			return null;
-		}finally {
-			this.entityManager.close();
-			this.entityManagerFactory.close();
-		}
-	}
-
-	
-	@Override
-	public PessoaEntityDTO GetPessoa(int pId) {
-		try{
-			@SuppressWarnings("unchecked")
-			List<PessoaEntity> pessoa = this.entityManager.createQuery("FROM PessoaEntity p WHERE p.id_Pessoa = :pId ")
-					.setParameter("pId", pId)
-					.getResultList();
-			if(pessoa != null && pessoa.size() > 0)
-			{
-				return new PessoaEntityDTO(true,"Pessoa recuperada!", pessoa.get(0));
-			}else{
-				return new PessoaEntityDTO(false,"Nenhum dado encontrado para este id!");
-			}
 			
+			return new NotificacoesEntityDTO(true, "Atualizado com sucesso!", pNotificacoesEntity);
 		}catch (Exception e) {
 			return null;
 		}finally {
@@ -103,16 +56,32 @@ public class PessoaRepository implements PessoaDAO{
 	}
 
 	@Override
-	public PessoaEntityDTO TodasPessoas() {
+	public NotificacoesEntityDTO Excluir(NotificacoesEntity pNotificacoesEntity) {
+		try{
+			this.entityManager.getTransaction().begin();
+			this.entityManager.remove(pNotificacoesEntity);
+			this.entityManager.getTransaction().commit();
+			
+			return new NotificacoesEntityDTO(true, "Excluido com sucesso!");
+		}catch (Exception e) {
+			return null;
+		}finally {
+			this.entityManager.close();
+			this.entityManagerFactory.close();
+		}
+	}
+
+	@Override
+	public NotificacoesEntityDTO GetNotificacoes(int pId) {
 		try{
 			@SuppressWarnings("unchecked")
-			List<PessoaEntity> pessoas = this.entityManager.createQuery("FROM PessoaEntity")
-					.getResultList();
-			if(pessoas != null && pessoas.size() > 0)
+			List<NotificacoesEntity> lista = this.entityManager.createQuery("SELECT p FROM NotificacoesEntity p WHERE p.id_Notificacoes = :pId")
+					.setParameter("pId", pId).getResultList();
+			if(lista != null && lista.size() > 0)
 			{
-				return new PessoaEntityDTO(true,"Lista recuperada!", pessoas);
+				return new NotificacoesEntityDTO(true, "Recuperado com sucesso!", lista.get(0));
 			}else{
-				return new PessoaEntityDTO(false,"Nenhum dado encontrado!");
+				return new NotificacoesEntityDTO(false, "Nenhum dado encontrado!");
 			}
 		}catch (Exception e) {
 			return null;
@@ -122,4 +91,23 @@ public class PessoaRepository implements PessoaDAO{
 		}
 	}
 
+	@Override
+	public NotificacoesEntityDTO TodasNotificacoes() {
+		try{
+			@SuppressWarnings("unchecked")
+			List<NotificacoesEntity> lista = this.entityManager.createQuery("FROM NotificacoesEntity")
+					.getResultList();
+			if(lista != null && lista.size() > 0)
+			{
+				return new NotificacoesEntityDTO(true, "Recuperado com sucesso!", lista);
+			}else{
+				return new NotificacoesEntityDTO(false, "Nenhum dado encontrado!");
+			}
+		}catch (Exception e) {
+			return null;
+		}finally {
+			this.entityManager.close();
+			this.entityManagerFactory.close();
+		}
+	}
 }

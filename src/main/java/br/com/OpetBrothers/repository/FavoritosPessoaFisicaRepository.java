@@ -6,17 +6,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import br.com.OpetBrothers.dao.Marca_ProdutoDAO;
-import br.com.OpetBrothers.dto.Marca_ProdutoEntityDTO;
-import br.com.OpetBrothers.repository.entity.Marca_ProdutoEntity;
+import br.com.OpetBrothers.dao.FavoritosPessoaFisicaDAO;
+import br.com.OpetBrothers.dto.FavoritosPessoaFisicaEntityDTO;
+import br.com.OpetBrothers.repository.entity.FavoritosPessoaFisicaEntity;
 
-public class Marca_ProdutoRepository implements Marca_ProdutoDAO{
-
+public class FavoritosPessoaFisicaRepository implements FavoritosPessoaFisicaDAO{
 	private final EntityManagerFactory entityManagerFactory;
 	 
 	private final EntityManager entityManager;
  
-	public Marca_ProdutoRepository(){
+	public FavoritosPessoaFisicaRepository(){
  
 		/*CRIANDO O NOSSO EntityManagerFactory COM AS PORPRIEDADOS DO ARQUIVO persistence.xml */
 		this.entityManagerFactory = Persistence.createEntityManagerFactory("EncontreFacilWs");
@@ -25,13 +24,13 @@ public class Marca_ProdutoRepository implements Marca_ProdutoDAO{
 	}
 
 	@Override
-	public Marca_ProdutoEntityDTO Cadastrar(Marca_ProdutoEntity pMarca_ProdutoEntity) {
+	public FavoritosPessoaFisicaEntityDTO Cadastrar(FavoritosPessoaFisicaEntity pFavoritosPessoaFisicaEntity) {
 		try{
 			this.entityManager.getTransaction().begin();
-			this.entityManager.persist(pMarca_ProdutoEntity);
+			this.entityManager.persist(pFavoritosPessoaFisicaEntity);
 			this.entityManager.getTransaction().commit();
 			
-			return new Marca_ProdutoEntityDTO(true, "Cadastrado com sucesso!", pMarca_ProdutoEntity);
+			return new FavoritosPessoaFisicaEntityDTO(true, "Cadastrado com sucesso!", pFavoritosPessoaFisicaEntity);
 		}catch (Exception e) {
 			return null;
 		}finally {
@@ -41,13 +40,13 @@ public class Marca_ProdutoRepository implements Marca_ProdutoDAO{
 	}
 
 	@Override
-	public Marca_ProdutoEntityDTO Atualizar(Marca_ProdutoEntity pMarca_ProdutoEntity) {
+	public FavoritosPessoaFisicaEntityDTO Atualizar(FavoritosPessoaFisicaEntity pFavoritosPessoaFisicaEntity) {
 		try{
 			this.entityManager.getTransaction().begin();
-			this.entityManager.merge(pMarca_ProdutoEntity);
+			this.entityManager.merge(pFavoritosPessoaFisicaEntity);
 			this.entityManager.getTransaction().commit();
 			
-			return new Marca_ProdutoEntityDTO(true, "Atualizado com sucesso!", pMarca_ProdutoEntity);
+			return new FavoritosPessoaFisicaEntityDTO(true, "Atualizado com sucesso!", pFavoritosPessoaFisicaEntity);
 		}catch (Exception e) {
 			return null;
 		}finally {
@@ -57,13 +56,13 @@ public class Marca_ProdutoRepository implements Marca_ProdutoDAO{
 	}
 
 	@Override
-	public Marca_ProdutoEntityDTO Excluir(Marca_ProdutoEntity pMarca_ProdutoEntity) {
+	public FavoritosPessoaFisicaEntityDTO Excluir(FavoritosPessoaFisicaEntity pFavoritosPessoaFisicaEntity) {
 		try{
 			this.entityManager.getTransaction().begin();
-			this.entityManager.remove(pMarca_ProdutoEntity);
+			this.entityManager.remove(pFavoritosPessoaFisicaEntity);
 			this.entityManager.getTransaction().commit();
 			
-			return new Marca_ProdutoEntityDTO(true, "Removido com sucesso!");
+			return new FavoritosPessoaFisicaEntityDTO(true, "Excluido com sucesso!");
 		}catch (Exception e) {
 			return null;
 		}finally {
@@ -73,16 +72,16 @@ public class Marca_ProdutoRepository implements Marca_ProdutoDAO{
 	}
 
 	@Override
-	public Marca_ProdutoEntityDTO GetMarca_Produto(int pId) {
+	public FavoritosPessoaFisicaEntityDTO GetFavoritosPessoaFisica(int pId) {
 		try{
 			@SuppressWarnings("unchecked")
-			List<Marca_ProdutoEntity> lista = this.entityManager.createQuery("SELECT p FROM Marca_ProdutoEntity p WHERE p.id_Marca_Produto = :pId")
+			List<FavoritosPessoaFisicaEntity> lista = this.entityManager.createQuery("SELECT p FROM FavoritosPessoaFisicaEntity p WHERE p.id_Favoritos = :pId")
 					.setParameter("pId", pId).getResultList();
 			if(lista != null && lista.size() > 0)
 			{
-				return new Marca_ProdutoEntityDTO(true, "Recuperado com sucesso!", lista.get(0));
+				return new FavoritosPessoaFisicaEntityDTO(true, "Recuperado com sucesso!", lista.get(0));
 			}else{
-				return new Marca_ProdutoEntityDTO(false, "Nenhum dado encontrado!");
+				return new FavoritosPessoaFisicaEntityDTO(false, "Nenhum dado encontrado!");
 			}
 		}catch (Exception e) {
 			return null;
@@ -93,15 +92,15 @@ public class Marca_ProdutoRepository implements Marca_ProdutoDAO{
 	}
 
 	@Override
-	public Marca_ProdutoEntityDTO TodasMarca_Produto() {
+	public FavoritosPessoaFisicaEntityDTO TodasFavoritos() {
 		try{
 			@SuppressWarnings("unchecked")
-			List<Marca_ProdutoEntity> lista = this.entityManager.createQuery("FROM Marca_ProdutoEntity").getResultList();
+			List<FavoritosPessoaFisicaEntity> lista = this.entityManager.createQuery("FROM FavoritosPessoaFisicaEntity").getResultList();
 			if(lista != null && lista.size() > 0)
 			{
-				return new Marca_ProdutoEntityDTO(true, "Recuperado com sucesso!", lista);
+				return new FavoritosPessoaFisicaEntityDTO(true, "Recuperado com sucesso!", lista);
 			}else{
-				return new Marca_ProdutoEntityDTO(false, "Nenhum dado encontrado!");
+				return new FavoritosPessoaFisicaEntityDTO(false, "Nenhum dado encontrado!");
 			}
 		}catch (Exception e) {
 			return null;

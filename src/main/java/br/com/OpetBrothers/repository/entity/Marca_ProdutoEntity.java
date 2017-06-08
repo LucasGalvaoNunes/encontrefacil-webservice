@@ -17,26 +17,28 @@ public class Marca_ProdutoEntity {
 	@Column(name="ID_MARCA_PRODUTO")
 	@GeneratedValue(generator="id_marca_produto")
     @GenericGenerator(name="id_marca_produto", strategy = "increment")
-	private int Id_Marca_Produto;
+	private int id_Marca_Produto;
 	
 	@Column(name="NOME")
-	private String Nome;
+	private String nome;
 
 	public int getId_Marca_Produto() {
-		return Id_Marca_Produto;
+		return id_Marca_Produto;
 	}
 
 	public void setId_Marca_Produto(int id_Marca_Produto) {
-		Id_Marca_Produto = id_Marca_Produto;
+		this.id_Marca_Produto = id_Marca_Produto;
 	}
 
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
+
+	
 
 	
 }

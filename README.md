@@ -5,7 +5,7 @@ Repositorios do projeto:
 * [Aplicativo Android](https://bitbucket.org/Lucas_Galvao/encontrefacil)
 ## **Equipe:** ##
 * **Lucas Galvão Nunes**
-* **Rafael Valente dos Santos**
+* **Rafael dos Santos Valente**
 
 # **Configurando o projeto:** #
  Para que o projeto funcione corretamente é necessario fazer a instalação das seguintes extensões:

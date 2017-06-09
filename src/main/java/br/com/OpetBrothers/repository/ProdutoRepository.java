@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 import br.com.OpetBrothers.dao.ProdutoDAO;
 import br.com.OpetBrothers.dto.ProdutoEntityDTO;
 import br.com.OpetBrothers.repository.entity.Categoria_ProdutoEntity;
+import br.com.OpetBrothers.repository.entity.LocalizacaoEntity;
 import br.com.OpetBrothers.repository.entity.Marca_ProdutoEntity;
 import br.com.OpetBrothers.repository.entity.NotificacoesEntity;
 import br.com.OpetBrothers.repository.entity.ProdutoEntity;
@@ -126,7 +127,8 @@ public class ProdutoRepository implements  ProdutoDAO{
 	}
 
 	@Override
-	public ProdutoEntityDTO BuscarPorNome(String pBairro, String pCidade, String pEstado, String pNome) {
+	public ProdutoEntityDTO BuscarPorNome(LocalizacaoEntity pLocalizacao, String pNome) {
+		pNome= pNome.replace("_", " ");
 		try{
 			@SuppressWarnings("unchecked")
 			List<ProdutoEntity> lista = this.entityManager.createQuery("SELECT p FROM ProdutoEntity p WHERE "
@@ -139,9 +141,9 @@ public class ProdutoRepository implements  ProdutoDAO{
 				+ " p.fk_Pessoa_Juridica.fk_Localizacao.estado = :pEstado"
 				+ " AND p.is_active = 1")
 				.setParameter("pNome", pNome)
-				.setParameter("pBairro", pBairro)
-				.setParameter("pCidade", pCidade)
-				.setParameter("pEstado", pEstado)
+				.setParameter("pBairro", pLocalizacao.getBairro())
+				.setParameter("pCidade", pLocalizacao.getCidade())
+				.setParameter("pEstado", pLocalizacao.getEstado())
 				.getResultList();
 			if(lista != null && lista.size() > 0)
 			{
@@ -159,7 +161,8 @@ public class ProdutoRepository implements  ProdutoDAO{
 	}
 
 	@Override
-	public ProdutoEntityDTO BuscarPorCategoria(String pBairro, String pCidade, String pEstado, int pId) {
+	public ProdutoEntityDTO BuscarPorCategoria(LocalizacaoEntity pLocalizacao, int pId) {
+		
 		try{
 			@SuppressWarnings("unchecked")
 			List<ProdutoEntity> lista = this.entityManager.createQuery("SELECT p FROM ProdutoEntity p WHERE "
@@ -172,9 +175,9 @@ public class ProdutoRepository implements  ProdutoDAO{
 					+ " p.fk_Pessoa_Juridica.fk_Localizacao.estado = :pEstado"
 					+ " AND p.is_active = 1")
 					.setParameter("pId", pId)
-					.setParameter("pBairro", pBairro)
-					.setParameter("pCidade", pCidade)
-					.setParameter("pEstado", pEstado)
+					.setParameter("pBairro", pLocalizacao.getBairro())
+					.setParameter("pCidade", pLocalizacao.getCidade())
+					.setParameter("pEstado", pLocalizacao.getEstado())
 					.getResultList();
 			if(lista != null && lista.size() > 0)
 			{

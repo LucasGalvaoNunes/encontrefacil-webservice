@@ -2,6 +2,7 @@ package br.com.OpetBrothers.dao;
 
 
 import br.com.OpetBrothers.dto.ProdutoEntityDTO;
+import br.com.OpetBrothers.repository.entity.LocalizacaoEntity;
 import br.com.OpetBrothers.repository.entity.ProdutoEntity;
 
 public interface ProdutoDAO {
@@ -15,9 +16,9 @@ public interface ProdutoDAO {
 	
 	ProdutoEntityDTO GetProdutodaLoja(int pId);
 	
-	ProdutoEntityDTO BuscarPorNome(String pBairro, String pCidade, String pEstado, String pNome);
+	ProdutoEntityDTO BuscarPorNome(LocalizacaoEntity pLocalizacao, String pNome);
 	
-	ProdutoEntityDTO BuscarPorCategoria(String pBairro, String pCidade, String pEstado, int pId);
+	ProdutoEntityDTO BuscarPorCategoria(LocalizacaoEntity pLocalizacao, int pId);
 	
 	ProdutoEntityDTO RelatorioLoja(int pId);
 	

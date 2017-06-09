@@ -12,6 +12,7 @@ import javax.ws.rs.Produces;
 import br.com.OpetBrothers.dao.ProdutoDAO;
 import br.com.OpetBrothers.dto.ProdutoEntityDTO;
 import br.com.OpetBrothers.repository.ProdutoRepository;
+import br.com.OpetBrothers.repository.entity.LocalizacaoEntity;
 import br.com.OpetBrothers.repository.entity.ProdutoEntity;
 
 @Path("/Produto")
@@ -54,19 +55,21 @@ public class ProdutoController implements ProdutoDAO{
 	}
 
 	@Override
-	@GET
+	@POST
 	@Produces("application/json; charset=UTF-8")
-	@Path("/BuscarPorNome/{pBairro}/{pCidade}/{pEstado}/{pNome}")
-	public ProdutoEntityDTO BuscarPorNome(@PathParam("pBairro")String pBairro, @PathParam("pCidade")String pCidade, @PathParam("pEstado")String pEstado, @PathParam("pNome")String pNome) {
-		return this.repository.BuscarPorNome(pBairro, pCidade, pEstado, pNome);
+	@Consumes("application/json; charset=UTF-8")
+	@Path("/BuscarPorNome/{pNome}")
+	public ProdutoEntityDTO BuscarPorNome(LocalizacaoEntity pLocalizacao, @PathParam("pNome")String pNome) {
+		return this.repository.BuscarPorNome(pLocalizacao, pNome);
 	}
 
 	@Override
-	@GET
+	@POST
+	@Consumes("application/json; charset=UTF-8")
 	@Produces("application/json; charset=UTF-8")
-	@Path("/BuscarPorCategoria/{pBairro}/{pCidade}/{pEstado}/{pId}")
-	public ProdutoEntityDTO BuscarPorCategoria(@PathParam("pBairro")String pBairro, @PathParam("pCidade")String pCidade, @PathParam("pEstado")String pEstado, @PathParam("pId") int pId) {
-		return this.repository.BuscarPorCategoria(pBairro, pCidade, pEstado, pId);
+	@Path("/BuscarPorCategoria/{pId}")
+	public ProdutoEntityDTO BuscarPorCategoria(LocalizacaoEntity pLocalizacao, @PathParam("pId") int pId) {
+		return this.repository.BuscarPorCategoria(pLocalizacao, pId);
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 
 import br.com.OpetBrothers.dao.ProdutoDestaqueDAO;
 import br.com.OpetBrothers.dto.ProdutoDestaqueEntityDTO;
+import br.com.OpetBrothers.repository.entity.LocalizacaoEntity;
 import br.com.OpetBrothers.repository.entity.NotificacoesEntity;
 import br.com.OpetBrothers.repository.entity.ProdutoDestaqueEntity;
 
@@ -28,7 +29,7 @@ public class ProdutoDestaqueRepository implements ProdutoDestaqueDAO{
 	
 	
 	@Override
-	public ProdutoDestaqueEntityDTO PorLocalidade(String pBairro, String pCidade, String pEstado) {
+	public ProdutoDestaqueEntityDTO PorLocalidade(LocalizacaoEntity pLocalizacao) {
 		try{
 			@SuppressWarnings("unchecked")
 			List<ProdutoDestaqueEntity> lista = this.entityManager.createQuery("SELECT p FROM ProdutoDestaqueEntity p WHERE "
@@ -37,9 +38,9 @@ public class ProdutoDestaqueRepository implements ProdutoDestaqueDAO{
 					+ " p.fk_produto.fk_Pessoa_Juridica.fk_Localizacao.cidade = :pCidade"
 					+ " AND"
 					+ " p.fk_produto.fk_Pessoa_Juridica.fk_Localizacao.estado = :pEstado")
-					.setParameter("pBairro", pBairro)
-					.setParameter("pCidade", pCidade)
-					.setParameter("pEstado", pEstado)
+					.setParameter("pBairro", pLocalizacao.getBairro())
+					.setParameter("pCidade", pLocalizacao.getCidade())
+					.setParameter("pEstado", pLocalizacao.getEstado())
 					.getResultList();
 			if(lista != null && lista.size() > 0)
 			{

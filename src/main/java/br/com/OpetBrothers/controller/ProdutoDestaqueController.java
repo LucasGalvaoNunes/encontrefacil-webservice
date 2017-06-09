@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import br.com.OpetBrothers.dao.ProdutoDestaqueDAO;
 import br.com.OpetBrothers.dto.ProdutoDestaqueEntityDTO;
 import br.com.OpetBrothers.repository.ProdutoDestaqueRepository;
+import br.com.OpetBrothers.repository.entity.LocalizacaoEntity;
 import br.com.OpetBrothers.repository.entity.ProdutoDestaqueEntity;
 
 @Path("/ProdutoDestaque")
@@ -18,12 +19,12 @@ public class ProdutoDestaqueController implements ProdutoDestaqueDAO{
 	private ProdutoDestaqueRepository repository = new ProdutoDestaqueRepository();
 	
 	@Override
-	@GET
+	@POST
 	@Produces("application/json; charset=UTF-8")
-	@Path("/Buscar/{pBairro}/{pCidade}/{pEstado}")
-	public ProdutoDestaqueEntityDTO PorLocalidade(@PathParam("pBairro")String pBairro,@PathParam("pCidade") String pCidade, @PathParam("pEstado")String pEstado) {
-		
-		return this.repository.PorLocalidade(pBairro, pCidade, pEstado);
+	@Consumes("application/json; charset=UTF-8")
+	@Path("/Buscar")
+	public ProdutoDestaqueEntityDTO PorLocalidade(LocalizacaoEntity pLocalizacao) {
+		return this.repository.PorLocalidade(pLocalizacao);
 	}
 
 	@Override

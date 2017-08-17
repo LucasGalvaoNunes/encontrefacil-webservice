@@ -81,11 +81,11 @@
  
  
    <!-- https://mvnrepository.com/artifact/com.oracle/ojdbc14 -->
-	<dependency>
-		<groupId>com.oracle</groupId>
-		<artifactId>ojdbc7</artifactId>
-		<version>12.1.0</version>
-    </dependency>
+	<!--<dependency>-->
+	<!--	<groupId>com.oracle</groupId>-->
+	<!--	<artifactId>ojdbc7</artifactId>-->
+	<!--	<version>12.1.0</version>-->
+    <!--</dependency>-->
 
 	<dependency>
             <groupId>mysql</groupId>

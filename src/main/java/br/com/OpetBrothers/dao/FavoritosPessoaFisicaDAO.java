@@ -12,5 +12,7 @@ public interface FavoritosPessoaFisicaDAO {
 	
 	FavoritosPessoaFisicaEntityDTO GetFavoritosPessoaFisica(int pId);
 	
+	FavoritosPessoaFisicaEntityDTO GetTodasPorPessoa(int pId);
+	
 	FavoritosPessoaFisicaEntityDTO TodasFavoritos();
 }

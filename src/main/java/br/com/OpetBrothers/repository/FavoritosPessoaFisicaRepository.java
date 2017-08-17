@@ -59,7 +59,8 @@ public class FavoritosPessoaFisicaRepository implements FavoritosPessoaFisicaDAO
 	public FavoritosPessoaFisicaEntityDTO Excluir(FavoritosPessoaFisicaEntity pFavoritosPessoaFisicaEntity) {
 		try{
 			this.entityManager.getTransaction().begin();
-			this.entityManager.remove(pFavoritosPessoaFisicaEntity);
+			Object c = entityManager.merge(pFavoritosPessoaFisicaEntity);
+			entityManager.remove(c);
 			this.entityManager.getTransaction().commit();
 			
 			return new FavoritosPessoaFisicaEntityDTO(true, "Excluido com sucesso!");
@@ -96,6 +97,26 @@ public class FavoritosPessoaFisicaRepository implements FavoritosPessoaFisicaDAO
 		try{
 			@SuppressWarnings("unchecked")
 			List<FavoritosPessoaFisicaEntity> lista = this.entityManager.createQuery("FROM FavoritosPessoaFisicaEntity").getResultList();
+			if(lista != null && lista.size() > 0)
+			{
+				return new FavoritosPessoaFisicaEntityDTO(true, "Recuperado com sucesso!", lista);
+			}else{
+				return new FavoritosPessoaFisicaEntityDTO(false, "Nenhum dado encontrado!");
+			}
+		}catch (Exception e) {
+			return null;
+		}finally {
+			this.entityManager.close();
+			this.entityManagerFactory.close();
+		}
+	}
+
+	@Override
+	public FavoritosPessoaFisicaEntityDTO GetTodasPorPessoa(int pId) {
+		try{
+			@SuppressWarnings("unchecked")
+			List<FavoritosPessoaFisicaEntity> lista = this.entityManager.createQuery("SELECT p FROM FavoritosPessoaFisicaEntity p WHERE p.fk_Pessoa_Fisica.id_PessoaFisica = :pId")
+					.setParameter("pId", pId).getResultList();
 			if(lista != null && lista.size() > 0)
 			{
 				return new FavoritosPessoaFisicaEntityDTO(true, "Recuperado com sucesso!", lista);

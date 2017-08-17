@@ -65,7 +65,7 @@ public class Avaliacao_ProdutoController implements Avaliacao_ProdutoDAO {
 	@Override
 	@GET
 	@Produces("application/json; charset=UTF-8")
-	@Path("/AvaliacaoProduto/{pIdProd}")
+	@Path("/AvaliacaoPorProduto/{pIdProd}")
 	public Avaliacao_ProdutoEntityDTO TodasAvaliacoesProduto(@PathParam("pIdProd") int pIdProd) {
 		return this.repository.TodasAvaliacoesProduto(pIdProd);
 	}

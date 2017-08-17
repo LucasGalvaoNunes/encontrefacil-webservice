@@ -60,6 +60,14 @@ public class FavoritosPessoaFisicaController implements FavoritosPessoaFisicaDAO
 	public FavoritosPessoaFisicaEntityDTO TodasFavoritos() {
 		return this.repository.TodasFavoritos();
 	}
+
+	@Override
+	@GET
+	@Produces("application/json; charset=UTF-8")
+	@Path("/TodasPorPessoa/{pId}")
+	public FavoritosPessoaFisicaEntityDTO GetTodasPorPessoa(@PathParam("pId")int pId) {
+		return this.repository.GetTodasPorPessoa(pId);
+	}
 	
 	
 }

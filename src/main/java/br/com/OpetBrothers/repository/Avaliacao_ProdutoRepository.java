@@ -116,7 +116,7 @@ public class Avaliacao_ProdutoRepository implements Avaliacao_ProdutoDAO{
 		try{
 			@SuppressWarnings("unchecked")
 			List<Avaliacao_ProdutoEntity> lista = this.entityManager.createQuery("SELECT p FROM Avaliacao_ProdutoEntity p WHERE p.fk_Produto.id_Produto = :pIdProd")
-					.setParameter("pId", pIdProd).getResultList();
+					.setParameter("pIdProd", pIdProd).getResultList();
 			if(lista != null && lista.size() > 0)
 			{
 				return new Avaliacao_ProdutoEntityDTO(true, "Recuperado com sucesso!", lista);
